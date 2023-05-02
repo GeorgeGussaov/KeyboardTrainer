@@ -12,18 +12,20 @@ namespace KeyboardTrainer
     //8 - Джентельмены
     //9 - Бешеные псы
     //10 - Во все тяжкие
-    public partial class FormMain : Form
+    public partial class FormFirstMode : Form
     {
         int check = 0;
         int cntErr = 0;
         string title = "";
-        public FormMain()
+        public FormFirstMode()
         {
             InitializeComponent();
             Random rnd = new Random();
             int ind = rnd.Next(0, 10);
-            string[] text = { "text1.txt", "text2.txt", "text3.txt", "text4.txt", "text5.txt", "text6.txt", "text7.txt", "text8.txt", "text9.txt", "text10.txt" };
-            string[] ans = { "Крестный отец", "Хранители снов", "Великолепная семерка", "Ведьмак 2: Убийца королей", "Хоббит: Неожиданное путешествие", "Назад в будущее", "Бэтмен: Начало", "Джентельмены", "Бешеные псы", "Во все тяжкие"};
+            string[] text = { "text1.txt", "text2.txt", "text3.txt", "text4.txt", "text5.txt", 
+                "text6.txt", "text7.txt", "text8.txt", "text9.txt", "text10.txt" };
+            string[] ans = { "Крестный отец", "Хранители снов", "Великолепная семерка", "Ведьмак 2: Убийца королей", "Хоббит: Неожиданное путешествие", 
+                "Назад в будущее", "Бэтмен: Начало", "Джентельмены", "Бешеные псы", "Во все тяжкие"};
             StreamReader sr = new StreamReader(text[ind]);
             title = ans[ind];
             labelText.Text = sr.ReadToEnd();
@@ -32,7 +34,6 @@ namespace KeyboardTrainer
 
 
         }
-
         Stopwatch sw = Stopwatch.StartNew();
 
         private void textBoxTrainingField_TextChanged(object sender, EventArgs e)
@@ -52,12 +53,13 @@ namespace KeyboardTrainer
                 if (check == s.Length)
                 {
                     sw.Stop();
-                    MessageBox.Show("Текст из: " + title + "\nКоличество ошибок: " + cntErr + "\nВремени затрачено: " + sw.Elapsed + "\nСреднее кол-во символов в минуту: " + Convert.ToDouble(labelText.Text.Length)/(Convert.ToDouble(sw.ElapsedMilliseconds)/60000));
+                    MessageBox.Show("Текст из: " + title + "\nКоличество ошибок: " + cntErr + 
+                        "\nВремени затрачено: " + sw.Elapsed + "\nСреднее кол-во символов в минуту: " 
+                        + labelText.Text.Length/((sw.Elapsed.Minutes * 60 + sw.Elapsed.Seconds)/60));
                     this.Close();
                 }
-                labelCurrentWord.Text = "Current word: " + s[check];
+                else labelCurrentWord.Text = "Current word: " + s[check];
             }
-
         }
 
     }

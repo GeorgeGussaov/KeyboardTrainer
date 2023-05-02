@@ -1,6 +1,6 @@
 ﻿namespace KeyboardTrainer
 {
-    partial class FormMain
+    partial class FormFirstMode
     {
         /// <summary>
         ///  Required designer variable.
