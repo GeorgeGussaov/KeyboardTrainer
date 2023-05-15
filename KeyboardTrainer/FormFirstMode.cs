@@ -29,12 +29,12 @@ namespace KeyboardTrainer
             StreamReader sr = new StreamReader(text[ind]);
             title = ans[ind];
             labelText.Text = sr.ReadToEnd();
-            sr.Close();
+            sr.Close();                     //если что файл закрыт
             labelCurrentWord.Text = "Current word: " + labelText.Text.Split()[0];
 
 
         }
-        Stopwatch sw = Stopwatch.StartNew();
+        Stopwatch sw = Stopwatch.StartNew(); //таймер
 
         private void textBoxTrainingField_TextChanged(object sender, EventArgs e)
         {
@@ -55,7 +55,7 @@ namespace KeyboardTrainer
                     sw.Stop();
                     MessageBox.Show("Текст из: " + title + "\nКоличество ошибок: " + cntErr + 
                         "\nВремени затрачено: " + sw.Elapsed + "\nСреднее кол-во символов в минуту: " 
-                        + labelText.Text.Length/((sw.Elapsed.Minutes * 60 + sw.Elapsed.Seconds)/60));
+                        + labelText.Text.Length/((sw.Elapsed.Minutes * 60 + sw.Elapsed.Seconds)/60)); //высшая математика, среднее количество символов в минуту
                     this.Close();
                 }
                 else labelCurrentWord.Text = "Current word: " + s[check];
