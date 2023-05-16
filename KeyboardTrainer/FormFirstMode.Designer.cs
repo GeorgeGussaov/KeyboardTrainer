@@ -36,6 +36,7 @@
             // 
             // labelText
             // 
+            labelText.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelText.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelText.Location = new Point(12, 9);
             labelText.Name = "labelText";
@@ -45,6 +46,7 @@
             // 
             // textBoxTrainingField
             // 
+            textBoxTrainingField.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textBoxTrainingField.Location = new Point(315, 258);
             textBoxTrainingField.Name = "textBoxTrainingField";
             textBoxTrainingField.Size = new Size(166, 23);
@@ -53,6 +55,7 @@
             // 
             // labelCntError
             // 
+            labelCntError.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelCntError.AutoSize = true;
             labelCntError.Location = new Point(12, 372);
             labelCntError.Name = "labelCntError";
@@ -62,6 +65,7 @@
             // 
             // labelCurrentWord
             // 
+            labelCurrentWord.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelCurrentWord.AutoSize = true;
             labelCurrentWord.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelCurrentWord.Location = new Point(315, 366);
@@ -70,7 +74,7 @@
             labelCurrentWord.TabIndex = 3;
             labelCurrentWord.Text = "Current word:";
             // 
-            // FormMain
+            // FormFirstMode
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -79,7 +83,7 @@
             Controls.Add(labelCntError);
             Controls.Add(textBoxTrainingField);
             Controls.Add(labelText);
-            Name = "FormMain";
+            Name = "FormFirstMode";
             Text = "Keyboard Trainer";
             ResumeLayout(false);
             PerformLayout();

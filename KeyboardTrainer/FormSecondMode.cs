@@ -24,43 +24,41 @@ namespace KeyboardTrainer
         {
             InitializeComponent();
         }
+        
         Stopwatch sw = Stopwatch.StartNew(); //таймер
 
+         void newButton(Button btn)
+         {
+            Random r = new Random();
+            int t = r.Next(0, 700);
+            int t2 = r.Next(0, 350);
+            btn.Location = new Point(t, t2);
+            btn.Name = "newbtn";
+            btn.Size = new Size(50, 50);
+            btn.TabIndex = 3;
+            btn.Text = Convert.ToChar(r.Next('A', 'Z')).ToString();
+            btn.UseVisualStyleBackColor = true;
+            Controls.Add(newbtn);
+         }
 
         private void FormSecondMode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode.ToString() == newbtn.Text)
             {
                 cntHit++;
-                Random r = new Random();
-                int t = r.Next(0, 700);
-                int t2 = r.Next(0, 350);
-                newbtn.Location = new Point(t, t2);
-                //newbtn.Name = "newbtn";
-                newbtn.Size = new Size(50, 50);
-                //newbtn.TabIndex = 3;
-                newbtn.Text = Convert.ToChar(r.Next('A', 'Z')).ToString();
-                //newbtn.UseVisualStyleBackColor = true;
-                Controls.Add(newbtn);
+                newButton(newbtn);
             }
+            else newbtn.BackColor = Color.Red;
             if (cntDown == 0) //вывод первой кнопки
             {
                 labelText.Visible = false;
-                Random r = new Random();
-                int t = r.Next(0, 700);
-                int t2 = r.Next(0, 350);
-                newbtn.Location = new Point(t, t2);
-                //newbtn.Name = "newbtn";
-                newbtn.Size = new Size(50, 50);
-                newbtn.Text = Convert.ToChar(r.Next('A', 'Z')).ToString();
-                Controls.Add(newbtn);
+                newButton(newbtn);
             }
             cntDown++;
-            MessageBox.Show(sw.Elapsed.Minutes.ToString());
             if (sw.Elapsed.Minutes >= 1) //вывод результатов
             {
                 sw.Stop();
-                MessageBox.Show("Время: " + sw.Elapsed.Seconds + "\nКоличество нажатий: " + cntDown + "\nИз них попаданий: " + cntHit);
+                MessageBox.Show($"Время: { sw.Elapsed.Minutes}\nКоличество нажатий: {cntDown}\nИз них попаданий: { cntHit}");
             }
         }
     }

@@ -34,6 +34,7 @@
             // 
             // buttonFirstMode
             // 
+            buttonFirstMode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonFirstMode.Location = new Point(129, 91);
             buttonFirstMode.Name = "buttonFirstMode";
             buttonFirstMode.Size = new Size(442, 65);
@@ -44,6 +45,7 @@
             // 
             // buttonSecondMode
             // 
+            buttonSecondMode.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonSecondMode.Location = new Point(129, 230);
             buttonSecondMode.Name = "buttonSecondMode";
             buttonSecondMode.Size = new Size(442, 65);
