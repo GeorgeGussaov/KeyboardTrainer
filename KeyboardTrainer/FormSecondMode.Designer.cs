@@ -52,6 +52,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(labelText);
+            DoubleBuffered = true;
             Name = "FormSecondMode";
             Text = "FormSecondMode";
             KeyDown += FormSecondMode_KeyDown;
