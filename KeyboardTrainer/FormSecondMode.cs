@@ -24,21 +24,6 @@ namespace KeyboardTrainer
         public FormSecondMode()
         {
             InitializeComponent();
-            //Button[] keyboard = new Button[27];
-            //int left = 0;
-            //for (int i = 0; i < 27; i++)
-            //{
-            //    left++;
-            //    keyboard[i] = new Button();
-            //    if (i < 10) keyboard[i].Location = new Point(0, 280);
-            //    else if (i == 10) left = 0;
-            //    else if (i < 20) keyboard[i].Location = new Point(0, 330);
-            //    else if (i == 20) left = 0;
-            //    else if (i < 27) keyboard[i].Location = new Point(0, 380);
-            //    keyboard[i].Left = left * 45 + 15;
-            //    keyboard[i].Size = new Size(40, 40);
-            //    base.Controls.Add(keyboard[i]);
-            //}
         }
 
         Stopwatch sw = Stopwatch.StartNew(); //таймер
@@ -57,9 +42,9 @@ namespace KeyboardTrainer
             Controls.Add(newbtn);
         }
 
+        Button[] keyboard = new Button[26];
         void inputButtonMas() //вводим визуальную клавиатуру
         {
-            Button[] keyboard = new Button[26];
             string[] keyboardButtons = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A",
                 "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M" };
             int left = 0;
@@ -70,7 +55,7 @@ namespace KeyboardTrainer
                 if (i == 10) left = 0;
                 if (i == 19) left = 0;
                 if (i < 10) keyboard[i].Location = new Point(0, 280);
-                else if (i < 19) keyboard[i].Location = new Point(0, 330);
+                else if (i < 19) keyboard[i].Location = new Point(0, 330); //сложные и не очень процессы ввода кнопок
                 else if (i < 26) keyboard[i].Location = new Point(0, 380);
                 keyboard[i].Text = keyboardButtons[i];
                 keyboard[i].Left = left * 45 + 15;
@@ -78,12 +63,26 @@ namespace KeyboardTrainer
                 base.Controls.Add(keyboard[i]);
             }
         }
+
+        void checkButtonMas(string btn)
+        {
+            for (int i = 0; i < 26; i++)
+            {
+                if (btn == keyboard[i].Text)
+                {
+                    keyboard[i].BackColor = Color.Orange;
+                }
+                else keyboard[i].BackColor = Color.White;
+            }
+        }
         private void FormSecondMode_KeyDown(object sender, KeyEventArgs e)
         {
+            //checkButtonMas(newbtn.Text);
             if (e.KeyCode.ToString() == newbtn.Text)
             {
                 cntHit++;
                 newButton(newbtn);
+                checkButtonMas(newbtn.Text);
             }
             else newbtn.BackColor = Color.Red;
             if (cntDown == 0) //вывод первой кнопки и визуальной клавиатуры
@@ -96,7 +95,7 @@ namespace KeyboardTrainer
             if (sw.Elapsed.Minutes >= 1) //вывод результатов
             {
                 sw.Stop();
-                MessageBox.Show($"Время: {sw.Elapsed.Minutes}\nКоличество нажатий: {cntDown}\nИз них попаданий: {cntHit}");
+                MessageBox.Show($"Время: {sw.Elapsed.Minutes} минута\nКоличество нажатий: {cntDown}\nИз них попаданий: {cntHit}");
             }
         }
 

@@ -32,9 +32,6 @@
             textBoxTrainingField = new TextBox();
             labelCntError = new Label();
             labelCurrentWord = new Label();
-            dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // labelText
@@ -60,7 +57,7 @@
             // 
             labelCntError.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelCntError.AutoSize = true;
-            labelCntError.Location = new Point(12, 372);
+            labelCntError.Location = new Point(12, 266);
             labelCntError.Name = "labelCntError";
             labelCntError.Size = new Size(85, 15);
             labelCntError.TabIndex = 2;
@@ -71,47 +68,23 @@
             labelCurrentWord.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             labelCurrentWord.AutoSize = true;
             labelCurrentWord.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelCurrentWord.Location = new Point(315, 366);
+            labelCurrentWord.Location = new Point(315, 383);
             labelCurrentWord.Name = "labelCurrentWord";
             labelCurrentWord.Size = new Size(106, 21);
             labelCurrentWord.TabIndex = 3;
             labelCurrentWord.Text = "Current word:";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.ColumnHeadersVisible = false;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1 });
-            dataGridView1.Location = new Point(531, 277);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(240, 150);
-            dataGridView1.TabIndex = 4;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Column1";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
             // 
             // FormFirstMode
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
             Controls.Add(labelCurrentWord);
             Controls.Add(labelCntError);
             Controls.Add(textBoxTrainingField);
             Controls.Add(labelText);
             Name = "FormFirstMode";
             Text = "Keyboard Trainer";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -122,7 +95,5 @@
         private TextBox textBoxTrainingField;
         private Label labelCntError;
         private Label labelCurrentWord;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
     }
 }
