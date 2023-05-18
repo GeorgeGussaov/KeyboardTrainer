@@ -23,7 +23,6 @@ namespace KeyboardTrainer
         public FormSecondMode()
         {
             InitializeComponent();
-            MessageBox.Show(this.Width.ToString() + " " + this.Height.ToString());
         }
 
         Stopwatch sw = Stopwatch.StartNew(); //таймер
@@ -49,16 +48,16 @@ namespace KeyboardTrainer
         {
             string[] keyboardButtons = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A",
                 "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M" };
-            int left = 0;
+            int left = 4;
             for (int i = 0; i < 26; i++)
             {
                 left++;
                 keyboard[i] = new Button();
-                if (i == 10) left = 0;
-                if (i == 19) left = 0;
-                if (i < 10) keyboard[i].Location = new Point(0, 280);
-                else if (i < 19) keyboard[i].Location = new Point(0, 330); //сложные и не очень процессы ввода кнопок
-                else if (i < 26) keyboard[i].Location = new Point(0, 380);
+                if (i == 10) left = 4;
+                else if (i == 19) left = 4;
+                if (i < 10) keyboard[i].Location = new Point(0, 550);
+                else if (i < 19) keyboard[i].Location = new Point(0, 600); //сложные и не очень процессы ввода кнопок
+                else if (i < 26) keyboard[i].Location = new Point(0, 650);
                 keyboard[i].Text = keyboardButtons[i];
                 keyboard[i].Left = left * 45 + 15;
                 keyboard[i].Size = new Size(40, 40);

@@ -35,7 +35,7 @@
             // 
             labelText.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelText.AutoSize = true;
-            labelText.Location = new Point(300, 70);
+            labelText.Location = new Point(300, 195);
             labelText.Name = "labelText";
             labelText.Size = new Size(222, 15);
             labelText.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 461);
+            ClientSize = new Size(1084, 711);
             Controls.Add(labelText);
             DoubleBuffered = true;
             Name = "FormSecondMode";

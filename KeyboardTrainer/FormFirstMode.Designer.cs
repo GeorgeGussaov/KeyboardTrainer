@@ -40,16 +40,16 @@
             labelText.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelText.Location = new Point(12, 9);
             labelText.Name = "labelText";
-            labelText.Size = new Size(860, 260);
+            labelText.Size = new Size(1060, 410);
             labelText.TabIndex = 0;
             labelText.Text = "Text from file";
             // 
             // textBoxTrainingField
             // 
             textBoxTrainingField.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBoxTrainingField.Location = new Point(313, 272);
+            textBoxTrainingField.Location = new Point(262, 347);
             textBoxTrainingField.Name = "textBoxTrainingField";
-            textBoxTrainingField.Size = new Size(250, 23);
+            textBoxTrainingField.Size = new Size(450, 23);
             textBoxTrainingField.TabIndex = 1;
             textBoxTrainingField.TextChanged += textBoxTrainingField_TextChanged;
             // 
@@ -57,7 +57,7 @@
             // 
             labelCntError.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelCntError.AutoSize = true;
-            labelCntError.Location = new Point(12, 280);
+            labelCntError.Location = new Point(12, 355);
             labelCntError.Name = "labelCntError";
             labelCntError.Size = new Size(66, 15);
             labelCntError.TabIndex = 2;
@@ -68,7 +68,7 @@
             labelCurrentWord.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             labelCurrentWord.AutoSize = true;
             labelCurrentWord.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelCurrentWord.Location = new Point(569, 274);
+            labelCurrentWord.Location = new Point(769, 424);
             labelCurrentWord.Name = "labelCurrentWord";
             labelCurrentWord.Size = new Size(119, 21);
             labelCurrentWord.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 561);
+            ClientSize = new Size(1084, 711);
             Controls.Add(labelCurrentWord);
             Controls.Add(labelCntError);
             Controls.Add(textBoxTrainingField);
