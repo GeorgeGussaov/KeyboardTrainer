@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace KeyboardTrainer
 {
@@ -17,7 +18,7 @@ namespace KeyboardTrainer
         int check = 0;
         int cntErr = 0;
         string title = "";
-        string[] s;
+
         public FormFirstMode()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace KeyboardTrainer
             labelText.Text = sr.ReadToEnd();
             sr.Close();                     //если что файл закрыт
             labelCurrentWord.Text = "Текущее слово: " + labelText.Text.Split()[0];
-            s = labelText.Text.Split(new string[] { " ", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            
             inputButtonMas();
         }
 
@@ -48,9 +49,9 @@ namespace KeyboardTrainer
                 left++;
                 keyboard[i] = new Button();
                 if (i == 11) left = 3;
-                if (i == 23) left = 3;
-                if (i == 34) left = 3;
-                if (i == 45) left = 8;
+                else if (i == 23) left = 3;
+                else if (i == 34) left = 3;
+                else if (i == 45) left = 8;
                 if (i < 11) keyboard[i].Location = new Point(0, 300);
                 else if (i < 23) keyboard[i].Location = new Point(0, 350); //сложные и не очень процессы ввода кнопок
                 else if (i < 34) keyboard[i].Location = new Point(0, 400);
@@ -73,14 +74,13 @@ namespace KeyboardTrainer
 
 
         Stopwatch sw = Stopwatch.StartNew(); //таймер
-        //string[] s = labelText.Text.Split(new string[] { " ", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
         private void textBoxTrainingField_TextChanged(object sender, EventArgs e)
         {
-            //string[] s = labelText.Text.Split(new string[] { " ", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);//нагло взято с инета, в душе ни чаю что это, но оно работает
-            //string text = labelText.Text;
+            
             if (textBoxTrainingField.Text.Split().Length > 1) //опустошаем строку после введенного слова, попутно проверяя
             {
-                if (s[check] + " " == textBoxTrainingField.Text) //проверка слова на совпадение в тексте
+                string[] text = labelText.Text.Split(new string[] { " ", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries); //нагло взято с инета, нужно чтобы сплитнуть ентеры
+                if (text[check] + " " == textBoxTrainingField.Text) //проверка слова на совпадение в тексте
                     check++;
                 else
                 {
@@ -88,7 +88,7 @@ namespace KeyboardTrainer
                     labelCntError.Text = "Количество ошибок: " + cntErr;
                 }
                 textBoxTrainingField.Text = "";
-                if (check == s.Length)
+                if (check == text.Length)
                 {
                     sw.Stop();
                     MessageBox.Show("Текст из: " + title + "\nКоличество ошибок: " + cntErr +
@@ -96,7 +96,7 @@ namespace KeyboardTrainer
                         + labelText.Text.Length / ((sw.Elapsed.Minutes * 60 + sw.Elapsed.Seconds) / 60)); //высшая математика, среднее количество символов в минуту
                     this.Close();
                 }
-                else labelCurrentWord.Text = "Текущее слово: " + s[check];
+                else labelCurrentWord.Text = "Текущее слово: " + text[check];
             }
         }
 
