@@ -40,45 +40,45 @@
             labelText.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelText.Location = new Point(12, 9);
             labelText.Name = "labelText";
-            labelText.Size = new Size(776, 171);
+            labelText.Size = new Size(860, 260);
             labelText.TabIndex = 0;
             labelText.Text = "Text from file";
             // 
             // textBoxTrainingField
             // 
-            textBoxTrainingField.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            textBoxTrainingField.Location = new Point(315, 258);
+            textBoxTrainingField.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBoxTrainingField.Location = new Point(313, 272);
             textBoxTrainingField.Name = "textBoxTrainingField";
-            textBoxTrainingField.Size = new Size(166, 23);
+            textBoxTrainingField.Size = new Size(250, 23);
             textBoxTrainingField.TabIndex = 1;
             textBoxTrainingField.TextChanged += textBoxTrainingField_TextChanged;
             // 
             // labelCntError
             // 
-            labelCntError.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            labelCntError.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelCntError.AutoSize = true;
-            labelCntError.Location = new Point(12, 266);
+            labelCntError.Location = new Point(12, 280);
             labelCntError.Name = "labelCntError";
-            labelCntError.Size = new Size(85, 15);
+            labelCntError.Size = new Size(66, 15);
             labelCntError.TabIndex = 2;
-            labelCntError.Text = "Count errors: 0";
+            labelCntError.Text = "Ошибок: 0";
             // 
             // labelCurrentWord
             // 
-            labelCurrentWord.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            labelCurrentWord.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             labelCurrentWord.AutoSize = true;
             labelCurrentWord.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelCurrentWord.Location = new Point(315, 383);
+            labelCurrentWord.Location = new Point(569, 274);
             labelCurrentWord.Name = "labelCurrentWord";
-            labelCurrentWord.Size = new Size(106, 21);
+            labelCurrentWord.Size = new Size(119, 21);
             labelCurrentWord.TabIndex = 3;
-            labelCurrentWord.Text = "Current word:";
+            labelCurrentWord.Text = "Текущее слово:";
             // 
             // FormFirstMode
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(884, 561);
             Controls.Add(labelCurrentWord);
             Controls.Add(labelCntError);
             Controls.Add(textBoxTrainingField);

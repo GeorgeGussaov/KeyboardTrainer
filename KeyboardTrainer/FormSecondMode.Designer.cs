@@ -28,19 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            timer1 = new System.Windows.Forms.Timer(components);
             labelText = new Label();
             SuspendLayout();
             // 
-            // timer1
-            // 
-            timer1.Interval = 500;
-            // 
             // labelText
             // 
+            labelText.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelText.AutoSize = true;
-            labelText.Location = new Point(253, 56);
+            labelText.Location = new Point(300, 70);
             labelText.Name = "labelText";
             labelText.Size = new Size(222, 15);
             labelText.TabIndex = 0;
@@ -50,7 +45,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(884, 461);
             Controls.Add(labelText);
             DoubleBuffered = true;
             Name = "FormSecondMode";
@@ -61,8 +56,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timer1;
         private Label labelText;
     }
 }

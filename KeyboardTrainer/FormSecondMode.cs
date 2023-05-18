@@ -20,19 +20,20 @@ namespace KeyboardTrainer
         int cntDown = 0; //количество нажатий
         int cntHit = 0;  //колво попаданий
 
-
         public FormSecondMode()
         {
             InitializeComponent();
+            MessageBox.Show(this.Width.ToString() + " " + this.Height.ToString());
         }
 
         Stopwatch sw = Stopwatch.StartNew(); //таймер
 
-        void newButton(Button btn)
+        void newButton(Button btn) //появление новых кнопок
         {
             Random r = new Random();
-            int t = r.Next(0, 450);
-            int t2 = r.Next(0, 200);
+            int t = r.Next(0, this.Width - 100);
+            int t2 = r.Next(0, this.Height - 300);
+            //btn.Anchor = (AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom);
             btn.Location = new Point(t, t2);
             btn.Name = "newbtn";
             btn.Size = new Size(50, 50);
@@ -43,6 +44,7 @@ namespace KeyboardTrainer
         }
 
         Button[] keyboard = new Button[26];
+
         void inputButtonMas() //вводим визуальную клавиатуру
         {
             string[] keyboardButtons = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A",
@@ -64,7 +66,7 @@ namespace KeyboardTrainer
             }
         }
 
-        void checkButtonMas(string btn)
+        void checkButtonMas(string btn) //выделение нужной кнопки
         {
             for (int i = 0; i < 26; i++)
             {
@@ -90,6 +92,7 @@ namespace KeyboardTrainer
                 labelText.Visible = false;
                 newButton(newbtn);
                 inputButtonMas();
+                checkButtonMas(newbtn.Text);
             }
             cntDown++;
             if (sw.Elapsed.Minutes >= 1) //вывод результатов
