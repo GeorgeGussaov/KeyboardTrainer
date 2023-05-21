@@ -40,7 +40,7 @@
             labelText.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             labelText.Location = new Point(12, 9);
             labelText.Name = "labelText";
-            labelText.Size = new Size(1060, 410);
+            labelText.Size = new Size(1060, 335);
             labelText.TabIndex = 0;
             labelText.Text = "Text from file";
             // 
@@ -59,16 +59,16 @@
             labelCntError.AutoSize = true;
             labelCntError.Location = new Point(12, 355);
             labelCntError.Name = "labelCntError";
-            labelCntError.Size = new Size(66, 15);
+            labelCntError.Size = new Size(132, 15);
             labelCntError.TabIndex = 2;
-            labelCntError.Text = "Ошибок: 0";
+            labelCntError.Text = "Количество ошибок: 0";
             // 
             // labelCurrentWord
             // 
             labelCurrentWord.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             labelCurrentWord.AutoSize = true;
             labelCurrentWord.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelCurrentWord.Location = new Point(769, 424);
+            labelCurrentWord.Location = new Point(758, 355);
             labelCurrentWord.Name = "labelCurrentWord";
             labelCurrentWord.Size = new Size(119, 21);
             labelCurrentWord.TabIndex = 3;
@@ -83,8 +83,11 @@
             Controls.Add(labelCntError);
             Controls.Add(textBoxTrainingField);
             Controls.Add(labelText);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
             Name = "FormFirstMode";
-            Text = "Keyboard Trainer";
+            RightToLeftLayout = true;
+            Text = "Первый режим";
             ResumeLayout(false);
             PerformLayout();
         }

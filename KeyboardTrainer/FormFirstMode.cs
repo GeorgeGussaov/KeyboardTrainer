@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Linq.Expressions;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace KeyboardTrainer
@@ -20,7 +21,6 @@ namespace KeyboardTrainer
         string title = "";
         int ind = 0;
 
-
         public FormFirstMode()
         {
             InitializeComponent();
@@ -30,6 +30,7 @@ namespace KeyboardTrainer
                 "text6.txt", "text7.txt", "text8.txt", "text9.txt", "text10.txt" };
             string[] ans = { "Крестный отец", "Хранители снов", "Великолепная семерка", "Ведьмак 2: Убийца королей", "Хоббит: Неожиданное путешествие",
                 "Назад в будущее", "Бэтмен: Начало", "Джентельмены", "Бешеные псы", "Во все тяжкие"};
+
             StreamReader sr = new StreamReader(text[ind]);
             title = ans[ind];
             labelText.Text = sr.ReadToEnd();
@@ -38,7 +39,6 @@ namespace KeyboardTrainer
 
             inputButtonMas();
         }
-
 
         Button[] keyboard = new Button[46];
         void inputButtonMas() //вводим визуальную клавиатуру
@@ -70,25 +70,49 @@ namespace KeyboardTrainer
                 keyboard[i].Text = keyboardButtons[i];
                 keyboard[i].Left = left * 45 + 15;
                 keyboard[i].Size = new Size(40, 40);
+                keyboard[i].BackColor = Color.White;
                 base.Controls.Add(keyboard[i]);
             }
         }
 
 
         Stopwatch sw = Stopwatch.StartNew(); //таймер
-        int check1 = 0;
         private void textBoxTrainingField_TextChanged(object sender, EventArgs e)
         {
             List<string> text = new List<string>(labelText.Text.Split(new string[] { " ", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
             //взято с инета, нужно чтобы сплитнуть ентеры. Понимаю, что плохо делать его на каждом исправлении поля ввода, но по другому не придумал
             string user = textBoxTrainingField.Text;
+            if (check < text.Count)
+            {
+                if (ind < text[check].Length && ind < user.Length && user[ind] != text[check][ind] /*|| user.Length > text[check].Length + 1*/)
+                {
+                    cntErr++;                                                           //подсчет ошибок
+                    labelCntError.Text = "Количество ошибок: " + cntErr;
+                }
+                ind++;
+            }
+            if (user.Length > text[check].Length)
+            {
+                Label lbl = new Label();
+                lbl.Text = "ayeукправлвоапрВЫДОЛПРп";
+                lbl.ForeColor = Color.Black;
+                lbl.BackColor = Color.Blue;
+                lbl.Left = 215;
+                lbl.Location = new Point(200, 200);
+                base.Controls.Add(lbl);
+            }
+
             if (user == "")
             {
-                for (int i = 0; i < keyboard.Length; i++)
-                {
+                for (int i = 0; i < keyboard.Length; i++)   //очищаем клаву
                     keyboard[i].BackColor = Color.White;
-                }
+                ind = 0;
             }
+            else
+                for (int i = 0; i < keyboard.Length; i++)
+                    if (keyboard[i].Text == "space") keyboard[i].BackColor = Color.White;   //очищаем пробел
+
+
 
             for (int i = 0; i < user.Length; i++)
             {
@@ -115,6 +139,7 @@ namespace KeyboardTrainer
                         }
                         else if (user[i].ToString().ToLower() == keyboard[j].Text && text[check][i] != user[i])
                             keyboard[j].BackColor = Color.Red;  //нерпавильные красным
+
                     }
                     else
                     {
@@ -130,12 +155,9 @@ namespace KeyboardTrainer
 
                 if (text[check] + " " == user) //проверка слова на совпадение в тексте
                     check++;
-                else
-                {
-                    cntErr++;                  //подсчет ошибок
-                    labelCntError.Text = "Количество ошибок: " + cntErr;
-                }
+
                 textBoxTrainingField.Text = ""; //опустошение
+
                 if (check == text.Count)
                 {
                     sw.Stop();
@@ -146,7 +168,10 @@ namespace KeyboardTrainer
                 }
                 else labelCurrentWord.Text = "Текущее слово: " + text[check];
 
-
+                for (int i = 0; i < keyboard.Length; i++)
+                {
+                    if (keyboard[i].Text == "space") keyboard[i].BackColor = Color.Yellow;
+                }
             }
         }
 

@@ -98,6 +98,7 @@ namespace KeyboardTrainer
             {
                 sw.Stop();
                 MessageBox.Show($"Время: {sw.Elapsed.Minutes} минута\nКоличество нажатий: {cntDown}\nИз них попаданий: {cntHit}");
+                this.Close();
             }
         }
 

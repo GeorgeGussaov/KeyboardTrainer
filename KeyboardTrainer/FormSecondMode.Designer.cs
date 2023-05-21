@@ -35,7 +35,7 @@
             // 
             labelText.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             labelText.AutoSize = true;
-            labelText.Location = new Point(300, 195);
+            labelText.Location = new Point(436, 247);
             labelText.Name = "labelText";
             labelText.Size = new Size(222, 15);
             labelText.TabIndex = 0;
@@ -48,8 +48,10 @@
             ClientSize = new Size(1084, 711);
             Controls.Add(labelText);
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            MaximizeBox = false;
             Name = "FormSecondMode";
-            Text = "FormSecondMode";
+            Text = "Второй режим";
             KeyDown += FormSecondMode_KeyDown;
             ResumeLayout(false);
             PerformLayout();
