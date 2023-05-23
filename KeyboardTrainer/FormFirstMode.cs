@@ -14,32 +14,36 @@ namespace KeyboardTrainer
     //8 - Джентельмены
     //9 - Бешеные псы
     //10 - Во все тяжкие
+
     public partial class FormFirstMode : Form
     {
         int check = 0;
         int cntErr = 0;
         string title = "";
         int ind = 0;
-
         public FormFirstMode()
         {
             InitializeComponent();
             Random rnd = new Random();
             int ind = rnd.Next(0, 10);
-            string[] text = { "text1.txt", "text2.txt", "text3.txt", "text4.txt", "text5.txt",
+
+            string[] texts = { "text1.txt", "text2.txt", "text3.txt", "text4.txt", "text5.txt",
                 "text6.txt", "text7.txt", "text8.txt", "text9.txt", "text10.txt" };
             string[] ans = { "Крестный отец", "Хранители снов", "Великолепная семерка", "Ведьмак 2: Убийца королей", "Хоббит: Неожиданное путешествие",
                 "Назад в будущее", "Бэтмен: Начало", "Джентельмены", "Бешеные псы", "Во все тяжкие"};
 
-            StreamReader sr = new StreamReader(text[ind]);
+            StreamReader sr = new StreamReader(texts[ind]);
             title = ans[ind];
             labelText.Text = sr.ReadToEnd();
             sr.Close();                     //если что файл закрыт
             labelCurrentWord.Text = "Текущее слово: " + labelText.Text.Split()[0];
 
             inputButtonMas();
+            text = new List<string>(labelText.Text.Split(new string[] { " ", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
         }
-
+        List<string> text;
+        //взято с инета, нужно чтобы сплитнуть ентеры. Идея с инициализацией перед описанием тоже, т.к. иначе ругается на нестатическое поле labelText
+        
         Button[] keyboard = new Button[46];
         void inputButtonMas() //вводим визуальную клавиатуру
         {
@@ -79,28 +83,17 @@ namespace KeyboardTrainer
         Stopwatch sw = Stopwatch.StartNew(); //таймер
         private void textBoxTrainingField_TextChanged(object sender, EventArgs e)
         {
-            List<string> text = new List<string>(labelText.Text.Split(new string[] { " ", "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
-            //взято с инета, нужно чтобы сплитнуть ентеры. Понимаю, что плохо делать его на каждом исправлении поля ввода, но по другому не придумал
             string user = textBoxTrainingField.Text;
             if (check < text.Count)
             {
-                if (ind < text[check].Length && ind < user.Length && user[ind] != text[check][ind] /*|| user.Length > text[check].Length + 1*/)
+                if (ind < text[check].Length && ind < user.Length && user[ind] != text[check][ind])
                 {
                     cntErr++;                                                           //подсчет ошибок
                     labelCntError.Text = "Количество ошибок: " + cntErr;
                 }
                 ind++;
             }
-            if (user.Length > text[check].Length)
-            {
-                Label lbl = new Label();
-                lbl.Text = "ayeукправлвоапрВЫДОЛПРп";
-                lbl.ForeColor = Color.Black;
-                lbl.BackColor = Color.Blue;
-                lbl.Left = 215;
-                lbl.Location = new Point(200, 200);
-                base.Controls.Add(lbl);
-            }
+
 
             if (user == "")
             {
@@ -129,7 +122,7 @@ namespace KeyboardTrainer
                         }
                         else if (user[i] == '?' && text[check][i] == user[i])
                         {
-                            keyboard[34].BackColor = Color.Yellow;
+                            keyboard[34].BackColor = Color.Yellow;              //шифт - 34, остальное подходящие клавиши
                             keyboard[6].BackColor = Color.Yellow;
                         }
                         else if (user[i] == '!' && text[check][i] == user[i])
@@ -137,14 +130,16 @@ namespace KeyboardTrainer
                             keyboard[34].BackColor = Color.Yellow;
                             keyboard[0].BackColor = Color.Yellow;
                         }
+                        else if (user[i] == '*' && text[check][i] == user[i])
+                        {
+                            keyboard[34].BackColor = Color.Yellow;
+                            keyboard[1].BackColor = Color.Yellow;
+                        }
                         else if (user[i].ToString().ToLower() == keyboard[j].Text && text[check][i] != user[i])
                             keyboard[j].BackColor = Color.Red;  //нерпавильные красным
-
                     }
-                    else
-                    {
-                        if (keyboard[j].Text == user[i].ToString()) keyboard[j].BackColor = Color.Red;
-                    }
+                    else if (keyboard[j].Text == user[i].ToString()) keyboard[j].BackColor = Color.Red;
+                    
                 }
             }
 

@@ -86,6 +86,7 @@ namespace KeyboardTrainer
                 checkButtonMas(newbtn.Text);
             }
             else newbtn.BackColor = Color.Red;
+
             if (cntDown == 0) //вывод первой кнопки и визуальной клавиатуры
             {
                 labelText.Visible = false;

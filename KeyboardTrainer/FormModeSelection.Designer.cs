@@ -62,7 +62,7 @@
             Controls.Add(buttonSecondMode);
             Controls.Add(buttonFirstMode);
             Name = "FormModeSelection";
-            Text = "FormModeSelection";
+            Text = "Выбор режима";
             ResumeLayout(false);
         }
 
